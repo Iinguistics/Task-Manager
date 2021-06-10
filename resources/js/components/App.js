@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import ProjectsList from "./ProjectsList";
 import NewProject from "./NewProject";
+import SingleProject from "./SingleProject";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={ProjectsList} />
             <Route exact path="/create" component={NewProject} />
+            <Route exact path="/:id" component={SingleProject} />
           </Switch>
         </div>
       </BrowserRouter>

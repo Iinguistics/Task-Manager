@@ -5,7 +5,7 @@ const Header = () => (
   <nav className="navbar navbar-expand-md navbar-light navbar-laravel">
     <div className="container">
       <Link className="navbar-brand" to="/">
-        Task Manager
+        Task Manager <i className="fas fa-tasks"></i>
       </Link>
     </div>
   </nav>
