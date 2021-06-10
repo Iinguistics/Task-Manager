@@ -2479,6 +2479,23 @@ var SingleProject = function SingleProject(_ref) {
     fetchProject();
   }, []);
 
+  var renderTasks = function renderTasks() {
+    if (tasks) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
+        className: "list-group mt-3",
+        children: tasks.map(function (task) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+            className: "list-group-item d-flex justify-content-between align-items-center",
+            children: [task.title, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+              className: "btn btn-primary btn-sm",
+              children: "Mark as completed"
+            })]
+          }, task.id);
+        })
+      });
+    }
+  };
+
   var renderProject = function renderProject() {
     if (project) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
@@ -2492,7 +2509,7 @@ var SingleProject = function SingleProject(_ref) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "btn btn-primary btn-sm",
             children: "Mark as completed"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {})]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {}), renderTasks()]
         })]
       });
     }

@@ -15,6 +15,27 @@ const SingleProject = ({ match }) => {
     fetchProject();
   }, []);
 
+  const renderTasks = () => {
+    if (tasks) {
+      return (
+        <ul className="list-group mt-3">
+          {tasks.map((task) => (
+            <li
+              className="list-group-item d-flex justify-content-between align-items-center"
+              key={task.id}
+            >
+              {task.title}
+
+              <button className="btn btn-primary btn-sm">
+                Mark as completed
+              </button>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  };
+
   const renderProject = () => {
     if (project) {
       return (
@@ -26,8 +47,8 @@ const SingleProject = ({ match }) => {
             <button className="btn btn-primary btn-sm">
               Mark as completed
             </button>
-
             <hr />
+            {renderTasks()}
           </div>
         </>
       );
