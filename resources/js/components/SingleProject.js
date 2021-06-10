@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SingleProject = ({ match }) => {
+const SingleProject = ({ match, history }) => {
   const [project, setProject] = useState(null);
   const [tasks, setTasks] = useState(null);
 
@@ -14,6 +14,12 @@ const SingleProject = ({ match }) => {
   useEffect(() => {
     fetchProject();
   }, []);
+
+  const markAsCompletedHandler = () => {
+    axios.put(`/api/projects/${project.id}`);
+
+    history.push("/");
+  };
 
   const renderTasks = () => {
     if (tasks) {
@@ -44,7 +50,10 @@ const SingleProject = ({ match }) => {
           <div className="card-body">
             <p>{project.description}</p>
 
-            <button className="btn btn-primary btn-sm">
+            <button
+              className="btn btn-primary btn-sm"
+              onClick={markAsCompletedHandler}
+            >
               Mark as completed
             </button>
             <hr />

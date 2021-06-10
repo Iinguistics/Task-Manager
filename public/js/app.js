@@ -2433,7 +2433,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var SingleProject = function SingleProject(_ref) {
-  var match = _ref.match;
+  var match = _ref.match,
+      history = _ref.history;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2479,6 +2480,11 @@ var SingleProject = function SingleProject(_ref) {
     fetchProject();
   }, []);
 
+  var markAsCompletedHandler = function markAsCompletedHandler() {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/projects/".concat(project.id));
+    history.push("/");
+  };
+
   var renderTasks = function renderTasks() {
     if (tasks) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
@@ -2508,6 +2514,7 @@ var SingleProject = function SingleProject(_ref) {
             children: project.description
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "btn btn-primary btn-sm",
+            onClick: markAsCompletedHandler,
             children: "Mark as completed"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {}), renderTasks()]
         })]
