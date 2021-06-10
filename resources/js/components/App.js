@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import ProjectsList from "./ProjectsList";
+import NewProject from "./NewProject";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={ProjectsList} />
+            <Route exact path="/create" component={NewProject} />
           </Switch>
         </div>
       </BrowserRouter>

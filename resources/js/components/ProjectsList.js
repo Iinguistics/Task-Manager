@@ -6,12 +6,6 @@ const ProjectsList = () => {
   const [projects, setProjects] = useState(null);
   const [test, setTest] = useState(null);
 
-  const testing = async () => {
-    const { data } = await axios.get("/api/test");
-    setTest(data);
-  };
-  console.log(test);
-
   const fetchProjects = async () => {
     const { data } = await axios.get("/api/projects");
     setProjects(data);
@@ -57,7 +51,6 @@ const ProjectsList = () => {
           </div>
         </div>
       </div>
-      <input type="submit" value="test" onClick={testing} />
     </div>
   );
 };
