@@ -2449,7 +2449,7 @@ var SingleProject = function SingleProject(_ref) {
       project = _useState2[0],
       setProject = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
       tasks = _useState4[0],
       setTasks = _useState4[1];
@@ -2463,6 +2463,21 @@ var SingleProject = function SingleProject(_ref) {
       _useState8 = _slicedToArray(_useState7, 2),
       errors = _useState8[0],
       setErrors = _useState8[1];
+
+  var hasErrorFor = function hasErrorFor(field) {
+    return errors[field];
+  };
+
+  var renderErrorFor = function renderErrorFor(field) {
+    if (hasErrorFor(field)) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+        className: "invalid-feedback",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
+          children: errors[field][0]
+        })
+      });
+    }
+  };
 
   var fetchProject = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -2534,25 +2549,68 @@ var SingleProject = function SingleProject(_ref) {
             className: "btn btn-primary btn-sm",
             onClick: markAsCompletedHandler,
             children: "Mark as completed"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {}), renderTasks()]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {}), renderTasks(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
+            onSubmit: addNewTaskHandler,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "input-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                type: "text",
+                name: "title",
+                className: "form-control ".concat(hasErrorFor("title") ? "is-invalid" : ""),
+                placeholder: "Task title",
+                value: title,
+                onChange: function onChange(e) {
+                  return setTitle(e.target.value);
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                className: "input-group-append",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  className: "btn btn-primary",
+                  type: "submit",
+                  children: "Add"
+                })
+              }), renderErrorFor("title")]
+            })
+          })]
         })]
       });
     }
   };
 
-  var addNewTaskHandler = function addNewTaskHandler(e) {
-    e.preventDefault();
-    var task = {
-      title: title,
-      project_id: project.id
+  var addNewTaskHandler = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
+      var task, _yield$axios$post, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              e.preventDefault();
+              task = {
+                title: title,
+                project_id: project.id
+              };
+              _context2.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/tasks", task);
+
+            case 4:
+              _yield$axios$post = _context2.sent;
+              data = _yield$axios$post.data;
+              setTitle("");
+              setTasks([].concat(_toConsumableArray(tasks), [data]));
+
+            case 8:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function addNewTaskHandler(_x) {
+      return _ref3.apply(this, arguments);
     };
-
-    var _axios$post = axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/tasks", task),
-        data = _axios$post.data;
-
-    setTitle("");
-    setTasks.apply(void 0, _toConsumableArray(tasks).concat([data]));
-  };
+  }();
 
   console.log(project);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {

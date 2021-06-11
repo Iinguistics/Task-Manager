@@ -3,9 +3,23 @@ import axios from "axios";
 
 const SingleProject = ({ match, history }) => {
   const [project, setProject] = useState(null);
-  const [tasks, setTasks] = useState(null);
+  const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const hasErrorFor = (field) => {
+    return errors[field];
+  };
+
+  const renderErrorFor = (field) => {
+    if (hasErrorFor(field)) {
+      return (
+        <span className="invalid-feedback">
+          <strong>{errors[field][0]}</strong>
+        </span>
+      );
+    }
+  };
 
   const fetchProject = async () => {
     const { data } = await axios.get(`/api/projects/${match.params.id}`);
@@ -60,13 +74,33 @@ const SingleProject = ({ match, history }) => {
             </button>
             <hr />
             {renderTasks()}
+            <form onSubmit={addNewTaskHandler}>
+              <div className="input-group">
+                <input
+                  type="text"
+                  name="title"
+                  className={`form-control ${
+                    hasErrorFor("title") ? "is-invalid" : ""
+                  }`}
+                  placeholder="Task title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <div className="input-group-append">
+                  <button className="btn btn-primary" type="submit">
+                    Add
+                  </button>
+                </div>
+                {renderErrorFor("title")}
+              </div>
+            </form>
           </div>
         </>
       );
     }
   };
 
-  const addNewTaskHandler = (e) => {
+  const addNewTaskHandler = async (e) => {
     e.preventDefault();
 
     const task = {
@@ -74,10 +108,10 @@ const SingleProject = ({ match, history }) => {
       project_id: project.id,
     };
 
-    const { data } = axios.post("/api/tasks", task);
+    const { data } = await axios.post("/api/tasks", task);
     setTitle("");
 
-    setTasks(...tasks, data);
+    setTasks([...tasks, data]);
   };
 
   console.log(project);
