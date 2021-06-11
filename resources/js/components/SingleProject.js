@@ -4,6 +4,8 @@ import axios from "axios";
 const SingleProject = ({ match, history }) => {
   const [project, setProject] = useState(null);
   const [tasks, setTasks] = useState(null);
+  const [title, setTitle] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const fetchProject = async () => {
     const { data } = await axios.get(`/api/projects/${match.params.id}`);
@@ -62,6 +64,20 @@ const SingleProject = ({ match, history }) => {
         </>
       );
     }
+  };
+
+  const addNewTaskHandler = (e) => {
+    e.preventDefault();
+
+    const task = {
+      title,
+      project_id: project.id,
+    };
+
+    const { data } = axios.post("/api/tasks", task);
+    setTitle("");
+
+    setTasks(...tasks, data);
   };
 
   console.log(project);
