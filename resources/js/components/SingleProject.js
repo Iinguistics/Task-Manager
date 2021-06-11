@@ -31,10 +31,19 @@ const SingleProject = ({ match, history }) => {
     fetchProject();
   }, []);
 
-  const markAsCompletedHandler = () => {
+  const markProjectAsCompletedHandler = () => {
     axios.put(`/api/projects/${project.id}`);
 
     history.push("/");
+  };
+
+  const markTaskAsCompletedHandler = async (taskId) => {
+    await axios.put(`/api/tasks/${taskId}`);
+    setTasks(
+      tasks.filter((task) => {
+        return task.id !== taskId;
+      })
+    );
   };
 
   const renderTasks = () => {
@@ -48,7 +57,10 @@ const SingleProject = ({ match, history }) => {
             >
               {task.title}
 
-              <button className="btn btn-primary btn-sm">
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={() => markTaskAsCompletedHandler(task.id)}
+              >
                 Mark as completed
               </button>
             </li>
@@ -68,7 +80,7 @@ const SingleProject = ({ match, history }) => {
 
             <button
               className="btn btn-primary btn-sm"
-              onClick={markAsCompletedHandler}
+              onClick={markProjectAsCompletedHandler}
             >
               Mark as completed
             </button>

@@ -2513,10 +2513,37 @@ var SingleProject = function SingleProject(_ref) {
     fetchProject();
   }, []);
 
-  var markAsCompletedHandler = function markAsCompletedHandler() {
+  var markProjectAsCompletedHandler = function markProjectAsCompletedHandler() {
     axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/projects/".concat(project.id));
     history.push("/");
   };
+
+  var markTaskAsCompletedHandler = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(taskId) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/tasks/".concat(taskId));
+
+            case 2:
+              setTasks(tasks.filter(function (task) {
+                return task.id !== taskId;
+              }));
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function markTaskAsCompletedHandler(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
 
   var renderTasks = function renderTasks() {
     if (tasks) {
@@ -2527,6 +2554,9 @@ var SingleProject = function SingleProject(_ref) {
             className: "list-group-item d-flex justify-content-between align-items-center",
             children: [task.title, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               className: "btn btn-primary btn-sm",
+              onClick: function onClick() {
+                return markTaskAsCompletedHandler(task.id);
+              },
               children: "Mark as completed"
             })]
           }, task.id);
@@ -2547,7 +2577,7 @@ var SingleProject = function SingleProject(_ref) {
             children: project.description
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "btn btn-primary btn-sm",
-            onClick: markAsCompletedHandler,
+            onClick: markProjectAsCompletedHandler,
             children: "Mark as completed"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {}), renderTasks(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
             onSubmit: addNewTaskHandler,
@@ -2578,37 +2608,37 @@ var SingleProject = function SingleProject(_ref) {
   };
 
   var addNewTaskHandler = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(e) {
       var task, _yield$axios$post, data;
 
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context3.prev = _context3.next) {
             case 0:
               e.preventDefault();
               task = {
                 title: title,
                 project_id: project.id
               };
-              _context2.next = 4;
+              _context3.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/tasks", task);
 
             case 4:
-              _yield$axios$post = _context2.sent;
+              _yield$axios$post = _context3.sent;
               data = _yield$axios$post.data;
               setTitle("");
               setTasks([].concat(_toConsumableArray(tasks), [data]));
 
             case 8:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
         }
-      }, _callee2);
+      }, _callee3);
     }));
 
-    return function addNewTaskHandler(_x) {
-      return _ref3.apply(this, arguments);
+    return function addNewTaskHandler(_x2) {
+      return _ref4.apply(this, arguments);
     };
   }();
 
