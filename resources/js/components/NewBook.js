@@ -60,13 +60,12 @@ const NewBook = ({ history }) => {
                 </div>
                 <div className="form-group">
                   <label htmlFor="author">Project Author</label>
-                  <textarea
+                  <input
                     id="author"
                     className={`form-control ${
                       hasErrorFor("author") ? "is-invalid" : ""
                     }`}
                     name="author"
-                    rows="10"
                     value={author}
                     onChange={(e) => setauthor(e.target.value)}
                   />
