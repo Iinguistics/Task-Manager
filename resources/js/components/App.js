@@ -5,6 +5,7 @@ import Header from "./Header";
 import ProjectsList from "./ProjectsList";
 import NewProject from "./NewProject";
 import SingleProject from "./SingleProject";
+import BookshelfHome from "./BookshelfHome";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={ProjectsList} />
-            <Route exact path="/create" component={NewProject} />
-            <Route exact path="/:id" component={SingleProject} />
+            <Route exact path="/task/create" component={NewProject} />
+            <Route exact path="/task/:id" component={SingleProject} />
+            <Route exact path="/bookshelf" component={BookshelfHome} />
           </Switch>
         </div>
       </BrowserRouter>

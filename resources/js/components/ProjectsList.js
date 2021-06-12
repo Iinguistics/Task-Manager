@@ -21,7 +21,7 @@ const ProjectsList = () => {
         return (
           <Link
             className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-            to={`/${project.id}`}
+            to={`/task/${project.id}`}
             key={project.id}
           >
             {project.name}
@@ -41,7 +41,7 @@ const ProjectsList = () => {
           <div className="card">
             <div className="card-header">All projects</div>
             <div className="card-body">
-              <Link className="btn btn-primary btn-sm mb-3" to="/create">
+              <Link className="btn btn-primary btn-sm mb-3" to="/task/create">
                 Create new project
               </Link>
               <ul className="list-group list-group-flush">
