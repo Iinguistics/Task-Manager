@@ -11,8 +11,9 @@ const BookshelfHome = () => {
   };
 
   useEffect(() => {
-    //fetchBooks();
+    fetchBooks();
   }, []);
+  console.log(books);
 
   return (
     <div className="container py-4">

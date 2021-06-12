@@ -2058,11 +2058,11 @@ function App() {
             component: _ProjectsList__WEBPACK_IMPORTED_MODULE_3__.default
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
             exact: true,
-            path: "/task/create",
+            path: "/project/create",
             component: _NewProject__WEBPACK_IMPORTED_MODULE_4__.default
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
             exact: true,
-            path: "/task/:id",
+            path: "/project/:id",
             component: _SingleProject__WEBPACK_IMPORTED_MODULE_5__.default
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
             exact: true,
@@ -2160,8 +2160,10 @@ var BookshelfHome = function BookshelfHome() {
     };
   }();
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {//fetchBooks();
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    fetchBooks();
   }, []);
+  console.log(books);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "container py-4",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -2227,7 +2229,7 @@ var Header = function Header() {
         className: "navbar-brand",
         to: "/bookshelf",
         children: ["Book Shelf ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-          "class": "fas fa-book"
+          className: "fas fa-book"
         })]
       })]
     })
@@ -2471,7 +2473,7 @@ var ProjectsList = function ProjectsList() {
       return projects.map(function (project) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
-          to: "/task/".concat(project.id),
+          to: "/project/".concat(project.id),
           children: [project.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             className: "badge badge-primary badge-pill",
             children: project.tasks_count
@@ -2496,7 +2498,7 @@ var ProjectsList = function ProjectsList() {
             className: "card-body",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
               className: "btn btn-primary btn-sm mb-3",
-              to: "/task/create",
+              to: "/project/create",
               children: "Create new project"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
               className: "list-group list-group-flush",

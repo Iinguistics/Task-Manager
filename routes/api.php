@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\BookController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +30,6 @@ Route::put('projects/{project}',  [ProjectController::class, 'markAsCompleted'])
 Route::post('tasks', [TaskController::class, 'store']);
 Route::put('tasks/{task}', [TaskController::class, 'markAsCompleted']);
 
+Route::get('books', [BookController::class, 'index']);
 
 Route::get('test', [ProjectController::class, 'test']);

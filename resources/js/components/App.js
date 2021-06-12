@@ -15,8 +15,8 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={ProjectsList} />
-            <Route exact path="/task/create" component={NewProject} />
-            <Route exact path="/task/:id" component={SingleProject} />
+            <Route exact path="/project/create" component={NewProject} />
+            <Route exact path="/project/:id" component={SingleProject} />
             <Route exact path="/bookshelf" component={BookshelfHome} />
           </Switch>
         </div>

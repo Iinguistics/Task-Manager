@@ -8,7 +8,7 @@ const Header = () => (
         Task Manager <i className="fas fa-tasks"></i>
       </Link>
       <Link className="navbar-brand" to="/bookshelf">
-        Book Shelf <i class="fas fa-book"></i>
+        Book Shelf <i className="fas fa-book"></i>
       </Link>
     </div>
   </nav>
