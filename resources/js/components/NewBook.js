@@ -4,6 +4,7 @@ import axios from "axios";
 const NewBook = ({ history }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [category, setCategory] = useState("");
   const [errors, setErrors] = useState([]);
 
   const hasErrorFor = (field) => {
@@ -27,10 +28,11 @@ const NewBook = ({ history }) => {
       const book = {
         title,
         author,
+        category,
       };
 
-      axios.post("/api/projects", book);
-      history.push("/");
+      axios.post("/api/books", book);
+      history.push("/bookshelf");
     } catch (error) {
       setErrors(error.response.data.errors);
     }
@@ -67,11 +69,21 @@ const NewBook = ({ history }) => {
                     }`}
                     name="author"
                     value={author}
-                    onChange={(e) => setauthor(e.target.value)}
+                    onChange={(e) => setAuthor(e.target.value)}
                   />
                   {renderErrorFor("author")}
                 </div>
-                <button className="btn btn-primary" type="submit">
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option value="non-fiction">Non-Fiction</option>
+                  <option value="fiction">Fiction</option>
+                  <option value="biography">Biography</option>
+                </select>
+                <br />
+                <button className="btn btn-primary my-3" type="submit">
                   Create
                 </button>
               </form>

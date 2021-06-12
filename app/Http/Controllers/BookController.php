@@ -11,8 +11,8 @@ class BookController extends Controller
     {
         $books = Books::all();
 
-        //return $books->toJson();
-        return response()->json('all books');
+        return $books->toJson();
+        //return response()->json('all books');
     }
 
 
@@ -26,6 +26,7 @@ class BookController extends Controller
         $book = Books::create([
             'title' => $validatedData['title'],
             'author' => $validatedData['author'],
+            'category' => $request->category
         ]);
 
         return response()->json('Book saved!');

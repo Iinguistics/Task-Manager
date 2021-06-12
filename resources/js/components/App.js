@@ -6,6 +6,7 @@ import ProjectsList from "./ProjectsList";
 import NewProject from "./NewProject";
 import SingleProject from "./SingleProject";
 import BookshelfHome from "./BookshelfHome";
+import NewBook from "./NewBook";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/project/create" component={NewProject} />
             <Route exact path="/project/:id" component={SingleProject} />
             <Route exact path="/bookshelf" component={BookshelfHome} />
+            <Route exact path="/book/create" component={NewBook} />
           </Switch>
         </div>
       </BrowserRouter>
