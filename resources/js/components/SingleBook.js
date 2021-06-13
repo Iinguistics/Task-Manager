@@ -56,20 +56,6 @@ const SingleBook = ({ match, history }) => {
     }
   };
 
-  const addNewTaskHandler = async (e) => {
-    e.preventDefault();
-
-    const task = {
-      title,
-      book_id: book.id,
-    };
-
-    const { data } = await axios.post("/api/tasks", task);
-    setTitle("");
-
-    setTasks([...tasks, data]);
-  };
-
   console.log(book);
 
   return (
