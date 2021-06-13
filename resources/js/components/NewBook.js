@@ -61,7 +61,7 @@ const NewBook = ({ history }) => {
                   {renderErrorFor("title")}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="author">Project Author</label>
+                  <label htmlFor="author">Book Author</label>
                   <input
                     id="author"
                     className={`form-control ${
@@ -77,7 +77,11 @@ const NewBook = ({ history }) => {
                   className="form-select"
                   aria-label="Default select example"
                   onChange={(e) => setCategory(e.target.value)}
+                  required
                 >
+                  <option selected value="">
+                    Choose a category
+                  </option>
                   <option value="non-fiction">Non-Fiction</option>
                   <option value="fiction">Fiction</option>
                   <option value="biography">Biography</option>

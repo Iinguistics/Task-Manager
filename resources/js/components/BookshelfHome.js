@@ -15,6 +15,23 @@ const BookshelfHome = () => {
   }, []);
   console.log(books);
 
+  const renderBooks = () => {
+    if (books) {
+      return books.map((book) => {
+        return (
+          <Link
+            className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+            to={`/book/${book.id}`}
+            key={book.id}
+          >
+            {book.title}
+            <span className="">By: {book.author}</span>
+          </Link>
+        );
+      });
+    }
+  };
+
   return (
     <div className="container py-4">
       <div className="row justify-content-center">
@@ -25,7 +42,7 @@ const BookshelfHome = () => {
               <Link className="btn btn-primary btn-sm mb-3" to="/book/create">
                 Add new book
               </Link>
-              <ul className="list-group list-group-flush"></ul>
+              <ul className="list-group list-group-flush">{renderBooks()}</ul>
             </div>
           </div>
         </div>

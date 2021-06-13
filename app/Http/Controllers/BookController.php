@@ -27,6 +27,7 @@ class BookController extends Controller
             'title' => $validatedData['title'],
             'author' => $validatedData['author'],
             'category' => $request->category
+
         ]);
 
         return response()->json('Book saved!');

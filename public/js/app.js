@@ -2170,6 +2170,22 @@ var BookshelfHome = function BookshelfHome() {
     fetchBooks();
   }, []);
   console.log(books);
+
+  var renderBooks = function renderBooks() {
+    if (books) {
+      return books.map(function (book) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+          className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
+          to: "/book/".concat(book.id),
+          children: [book.title, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+            className: "",
+            children: ["By: ", book.author]
+          })]
+        }, book.id);
+      });
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "container py-4",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -2188,7 +2204,8 @@ var BookshelfHome = function BookshelfHome() {
               to: "/book/create",
               children: "Add new book"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
-              className: "list-group list-group-flush"
+              className: "list-group list-group-flush",
+              children: renderBooks()
             })]
           })]
         })
@@ -2366,7 +2383,7 @@ var NewBook = function NewBook(_ref) {
                 className: "form-group",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "author",
-                  children: "Project Author"
+                  children: "Book Author"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                   id: "author",
                   className: "form-control ".concat(hasErrorFor("author") ? "is-invalid" : ""),
@@ -2382,7 +2399,12 @@ var NewBook = function NewBook(_ref) {
                 onChange: function onChange(e) {
                   return setCategory(e.target.value);
                 },
+                required: true,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  selected: true,
+                  value: "",
+                  children: "Choose a category"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "non-fiction",
                   children: "Non-Fiction"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
