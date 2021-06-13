@@ -42,16 +42,22 @@ const SingleBook = ({ match, history }) => {
           <div className="card-body">
             <p>By: {book.author}</p>
             <p>Genre: {book.category}</p>
-
-            <button
-              className="btn btn-primary btn-sm"
-              onClick={markbookAsCompletedHandler}
-            >
-              Mark as read
-            </button>
-            <hr />
+            {renderMarkButton()}
           </div>
         </>
+      );
+    }
+  };
+
+  const renderMarkButton = () => {
+    if (!book.is_read) {
+      return (
+        <button
+          className="btn btn-primary btn-sm"
+          onClick={markbookAsCompletedHandler}
+        >
+          Mark as read
+        </button>
       );
     }
   };

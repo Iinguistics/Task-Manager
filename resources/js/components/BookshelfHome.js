@@ -53,6 +53,9 @@ const BookshelfHome = () => {
 
   return (
     <div className="container py-4">
+      <Link className="btn btn-primary btn-sm my-3" to="/book/create">
+        Add new book
+      </Link>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
@@ -74,9 +77,6 @@ const BookshelfHome = () => {
             </div>
           </div>
         </div>
-        <Link className="btn btn-primary btn-sm my-3" to="/book/create">
-          Add new book
-        </Link>
       </div>
     </div>
   );

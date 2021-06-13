@@ -2207,9 +2207,13 @@ var BookshelfHome = function BookshelfHome() {
     }
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "container py-4",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      className: "btn btn-primary btn-sm my-3",
+      to: "/book/create",
+      children: "Add new book"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "row justify-content-center",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "col-md-6",
@@ -2241,12 +2245,8 @@ var BookshelfHome = function BookshelfHome() {
             })
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-        className: "btn btn-primary btn-sm my-3",
-        to: "/book/create",
-        children: "Add new book"
       })]
-    })
+    })]
   });
 };
 
@@ -2861,12 +2861,18 @@ var SingleBook = function SingleBook(_ref) {
             children: ["By: ", book.author]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
             children: ["Genre: ", book.category]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            className: "btn btn-primary btn-sm",
-            onClick: markbookAsCompletedHandler,
-            children: "Mark as read"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {})]
+          }), renderMarkButton()]
         })]
+      });
+    }
+  };
+
+  var renderMarkButton = function renderMarkButton() {
+    if (!book.is_read) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        className: "btn btn-primary btn-sm",
+        onClick: markbookAsCompletedHandler,
+        children: "Mark as read"
       });
     }
   };
