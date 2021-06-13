@@ -32,4 +32,20 @@ class BookController extends Controller
 
         return response()->json('Book saved!');
     }
+
+
+    public function show($id)
+    {
+        $book = Books::findOrFail($id);
+
+        return $book->toJson();
+    }
+
+    public function markAsCompleted(Books $book)
+    {
+        $book->is_read = true;
+        $book->update();
+
+        return response()->json('Project updated!');
+    }
 }

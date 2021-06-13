@@ -79,9 +79,7 @@ const NewBook = ({ history }) => {
                   onChange={(e) => setCategory(e.target.value)}
                   required
                 >
-                  <option selected value="">
-                    Choose a category
-                  </option>
+                  <option value="">Choose a category</option>
                   <option value="non-fiction">Non-Fiction</option>
                   <option value="fiction">Fiction</option>
                   <option value="biography">Biography</option>
