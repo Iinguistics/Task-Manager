@@ -2452,7 +2452,7 @@ var NewBook = function NewBook(_ref) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "btn btn-primary my-3",
                 type: "submit",
-                children: "Create"
+                children: "Add Book"
               })]
             })
           })]

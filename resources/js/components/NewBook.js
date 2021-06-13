@@ -86,7 +86,7 @@ const NewBook = ({ history }) => {
                 </select>
                 <br />
                 <button className="btn btn-primary my-3" type="submit">
-                  Create
+                  Add Book
                 </button>
               </form>
             </div>
