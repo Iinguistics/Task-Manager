@@ -33,6 +33,7 @@ Route::put('tasks/{task}', [TaskController::class, 'markAsCompleted']);
 Route::get('books', [BookController::class, 'index']);
 Route::post('books', [BookController::class, 'store']);
 Route::get('books/{id}', [BookController::class, 'show']);
+Route::delete('books/{id}', [BookController::class, 'destroy']);
 Route::put('books/{book}',  [BookController::class, 'markAsCompleted']);
 
 

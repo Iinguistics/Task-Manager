@@ -62,13 +62,26 @@ const SingleBook = ({ match, history }) => {
     }
   };
 
+  const deleteBookHandler = async () => {
+    await axios.delete(`/api/books/${match.params.id}`);
+    history.push("/bookshelf");
+  };
+
   console.log(book);
 
   return (
     <div className="container py-4">
       <div className="row justify-content-center">
         <div className="col-md-8">
-          <div className="card">{renderbook()}</div>
+          <div className="card">
+            {renderbook()}
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={deleteBookHandler}
+            >
+              Delete Book
+            </button>
+          </div>
         </div>
       </div>
     </div>

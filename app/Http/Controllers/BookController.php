@@ -49,4 +49,13 @@ class BookController extends Controller
 
         return response()->json('Book updated!');
     }
+
+
+    public function destroy($id)
+    {
+        $book = Books::findOrFail($id);
+        $book->delete();
+
+        return response()->json('Book removed!');
+    }
 }
