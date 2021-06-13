@@ -40,8 +40,8 @@ const SingleBook = ({ match, history }) => {
         <>
           <div className="card-header">{book.title}</div>
           <div className="card-body">
-            <p>{book.author}</p>
-            <p>{book.category}</p>
+            <p>By: {book.author}</p>
+            <p>Genre: {book.category}</p>
 
             <button
               className="btn btn-primary btn-sm"

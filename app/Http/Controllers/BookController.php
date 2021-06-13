@@ -41,11 +41,12 @@ class BookController extends Controller
         return $book->toJson();
     }
 
-    public function markAsCompleted(Books $book)
+    public function markAsCompleted($id)
     {
+        $book = Books::findOrFail($id);
         $book->is_read = true;
         $book->update();
 
-        return response()->json('Project updated!');
+        return response()->json('Book updated!');
     }
 }
