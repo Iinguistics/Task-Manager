@@ -8,6 +8,7 @@ import SingleProject from "./SingleProject";
 import BookshelfHome from "./BookshelfHome";
 import NewBook from "./NewBook";
 import SingleBook from "./SingleBook";
+import Test from "./Test";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/bookshelf" component={BookshelfHome} />
             <Route exact path="/book/create" component={NewBook} />
             <Route exact path="/book/:id" component={SingleBook} />
+            <Route exact path="/test" component={Test} />
           </Switch>
         </div>
       </BrowserRouter>

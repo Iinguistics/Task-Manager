@@ -58,4 +58,12 @@ class BookController extends Controller
 
         return response()->json('Book removed!');
     }
+
+
+    public function test()
+    {
+        $book = Books::all()
+            ->where('author', '=', 'Chris Bailey');
+        return $book->toJson();
+    }
 }

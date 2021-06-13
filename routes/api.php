@@ -37,4 +37,4 @@ Route::delete('books/{id}', [BookController::class, 'destroy']);
 Route::put('books/{book}',  [BookController::class, 'markAsCompleted']);
 
 
-Route::get('test', [ProjectController::class, 'test']);
+Route::get('test', [BookController::class, 'test']);
